@@ -1,0 +1,10 @@
+services:
+  bobmediamanager:
+    build: .
+    container_name: bobmediamanager
+    ports:
+      - "48040:48040"
+    volumes:
+      - ./config:/config
+      - /media:/media
+    restart: unless-stopped
