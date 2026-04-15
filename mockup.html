@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BobMediaManager — Mockup</title>
+<style>
+  [data-theme="light"]      {--bg:#f2f2f2;--surface:#fff;--surface2:#f8f8f8;--border:#d1d5db;--accent:#570df8;--accent2:#f000b8;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#1f2937;--muted:#9ca3af;--matched:#d1fae5;--matched-border:#36d399;--unmatched:#fee2e2;--unmatched-border:#f87272;--pending:#fef9c3;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.4);}
+  [data-theme="dark"]       {--bg:#1d232a;--surface:#191e24;--surface2:#15191e;--border:#2a323c;--accent:#661ae4;--accent2:#d926a9;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#a6adbb;--muted:#4b5563;--matched:#1a2e25;--matched-border:#36d399;--unmatched:#2e1a1a;--unmatched-border:#f87272;--pending:#2a2412;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.72);}
+  [data-theme="cupcake"]    {--bg:#faf7f5;--surface:#fefefe;--surface2:#f6f1ee;--border:#e8d5cc;--accent:#65c3c8;--accent2:#ef9fbc;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#291334;--muted:#9ca3af;--matched:#d1fae5;--matched-border:#65c3c8;--unmatched:#fee2e2;--unmatched-border:#f87272;--pending:#fef9c3;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.4);}
+  [data-theme="bumblebee"]  {--bg:#fff;--surface:#fff;--surface2:#f9f9f9;--border:#e5e7eb;--accent:#e0a82e;--accent2:#181830;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#181830;--muted:#9ca3af;--matched:#d1fae5;--matched-border:#36d399;--unmatched:#fee2e2;--unmatched-border:#f87272;--pending:#fef9c3;--pending-border:#e0a82e;--overlay:rgba(0,0,0,.4);}
+  [data-theme="emerald"]    {--bg:#f9fafb;--surface:#fff;--surface2:#f3f4f6;--border:#d1d5db;--accent:#66cc8a;--accent2:#377cfb;--green:#66cc8a;--yellow:#fbbd23;--red:#f87272;--text:#333c4d;--muted:#9ca3af;--matched:#d1fae5;--matched-border:#66cc8a;--unmatched:#fee2e2;--unmatched-border:#f87272;--pending:#fef9c3;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.4);}
+  [data-theme="corporate"]  {--bg:#f9f9f9;--surface:#fff;--surface2:#f0f0f0;--border:#e5e7eb;--accent:#4b6bfb;--accent2:#7b92b2;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#181a2a;--muted:#9ca3af;--matched:#d1fae5;--matched-border:#36d399;--unmatched:#fee2e2;--unmatched-border:#f87272;--pending:#fef9c3;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.4);}
+  [data-theme="synthwave"]  {--bg:#1a103c;--surface:#1e1147;--surface2:#251457;--border:#3d2a7a;--accent:#e779c1;--accent2:#58c7f3;--green:#36d399;--yellow:#f3cc30;--red:#f87272;--text:#f9f7fd;--muted:#7c6aae;--matched:#1a2e25;--matched-border:#36d399;--unmatched:#2e1a1a;--unmatched-border:#f87272;--pending:#2a2412;--pending-border:#f3cc30;--overlay:rgba(0,0,0,.72);}
+  [data-theme="retro"]      {--bg:#e4d8b4;--surface:#ece3ca;--surface2:#f0e8d5;--border:#c5b18d;--accent:#ef9995;--accent2:#a4cbb4;--green:#45c97a;--yellow:#e9c46a;--red:#e76f51;--text:#282425;--muted:#7c6a55;--matched:#c8e6c9;--matched-border:#45c97a;--unmatched:#ffcdd2;--unmatched-border:#e76f51;--pending:#fff9c4;--pending-border:#e9c46a;--overlay:rgba(0,0,0,.4);}
+  [data-theme="cyberpunk"]  {--bg:#ffee00;--surface:#ffd900;--surface2:#f5d300;--border:#c9a600;--accent:#ff7598;--accent2:#75d1f0;--green:#adff2f;--yellow:#ffd900;--red:#ff7598;--text:#1d0042;--muted:#6b6b00;--matched:#c8ffc8;--matched-border:#adff2f;--unmatched:#ffd1dc;--unmatched-border:#ff7598;--pending:#fffff0;--pending-border:#ffd900;--overlay:rgba(0,0,0,.5);}
+  [data-theme="valentine"]  {--bg:#fae8f0;--surface:#fff;--surface2:#f8e8f2;--border:#e8b4ca;--accent:#e96d9b;--accent2:#a991f7;--green:#36d399;--yellow:#fbbd23;--red:#e96d9b;--text:#632c3b;--muted:#c48a9e;--matched:#d1fae5;--matched-border:#36d399;--unmatched:#fee2e2;--unmatched-border:#e96d9b;--pending:#fef9c3;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.4);}
+  [data-theme="halloween"]  {--bg:#1d0500;--surface:#261000;--surface2:#2d1200;--border:#4a1a00;--accent:#f28c18;--accent2:#6d3a63;--green:#36d399;--yellow:#f28c18;--red:#f87272;--text:#f5d0a9;--muted:#7a4a22;--matched:#1a2e20;--matched-border:#36d399;--unmatched:#2e1a1a;--unmatched-border:#f87272;--pending:#2a1c00;--pending-border:#f28c18;--overlay:rgba(0,0,0,.8);}
+  [data-theme="garden"]     {--bg:#e9e7e7;--surface:#fff;--surface2:#f0eeee;--border:#d6d4d4;--accent:#5c7f67;--accent2:#cc4c4c;--green:#5c7f67;--yellow:#d4a017;--red:#cc4c4c;--text:#100f0f;--muted:#8a8a8a;--matched:#d1fae5;--matched-border:#5c7f67;--unmatched:#fee2e2;--unmatched-border:#cc4c4c;--pending:#fef9c3;--pending-border:#d4a017;--overlay:rgba(0,0,0,.4);}
+  [data-theme="forest"]     {--bg:#0e1c0e;--surface:#141d12;--surface2:#1a2618;--border:#2a3e28;--accent:#1eb854;--accent2:#1fd65f;--green:#1eb854;--yellow:#fbbd23;--red:#f87272;--text:#d4e6d4;--muted:#4a6a4a;--matched:#1a2e20;--matched-border:#1eb854;--unmatched:#2e1a1a;--unmatched-border:#f87272;--pending:#2a2412;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.75);}
+  [data-theme="aqua"]       {--bg:#345da7;--surface:#2f5496;--surface2:#2a4d87;--border:#244577;--accent:#09ecf3;--accent2:#966fb3;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#fff;--muted:#8ab4d6;--matched:#1a2e40;--matched-border:#09ecf3;--unmatched:#2e1a1a;--unmatched-border:#f87272;--pending:#2a2412;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.6);}
+  [data-theme="lofi"]       {--bg:#fff;--surface:#fff;--surface2:#f9f9f9;--border:#d1d1d1;--accent:#0d0d0d;--accent2:#1a1a1a;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#0d0d0d;--muted:#9ca3af;--matched:#f0fdf4;--matched-border:#36d399;--unmatched:#fef2f2;--unmatched-border:#f87272;--pending:#fefce8;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.4);}
+  [data-theme="pastel"]     {--bg:#f8f0fb;--surface:#fff;--surface2:#f5ecf8;--border:#e8d5f0;--accent:#d1a3e8;--accent2:#f4a7b9;--green:#a8d8a8;--yellow:#f9e4b7;--red:#f4a7b9;--text:#513866;--muted:#c4a6d4;--matched:#d1fae5;--matched-border:#a8d8a8;--unmatched:#fee2e2;--unmatched-border:#f4a7b9;--pending:#fef9c3;--pending-border:#f9e4b7;--overlay:rgba(0,0,0,.4);}
+  [data-theme="fantasy"]    {--bg:#fff;--surface:#fff;--surface2:#f9f9f9;--border:#d1d5db;--accent:#6e0b75;--accent2:#007ebd;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#1f2937;--muted:#9ca3af;--matched:#d1fae5;--matched-border:#36d399;--unmatched:#fee2e2;--unmatched-border:#f87272;--pending:#fef9c3;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.4);}
+  [data-theme="black"]      {--bg:#000;--surface:#000;--surface2:#111;--border:#333;--accent:#fff;--accent2:#999;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#fff;--muted:#666;--matched:#0a1a0a;--matched-border:#36d399;--unmatched:#1a0a0a;--unmatched-border:#f87272;--pending:#1a1a00;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.85);}
+  [data-theme="luxury"]     {--bg:#09090b;--surface:#0d0d10;--surface2:#131316;--border:#2a2a30;--accent:#c4a46b;--accent2:#9a9a9a;--green:#36d399;--yellow:#c4a46b;--red:#f87272;--text:#e9e4d9;--muted:#4a4a50;--matched:#0a1a10;--matched-border:#36d399;--unmatched:#1a0a0a;--unmatched-border:#f87272;--pending:#1a1500;--pending-border:#c4a46b;--overlay:rgba(0,0,0,.85);}
+  [data-theme="dracula"]    {--bg:#282a36;--surface:#21222c;--surface2:#1a1b26;--border:#44475a;--accent:#ff79c6;--accent2:#bd93f9;--green:#50fa7b;--yellow:#f1fa8c;--red:#ff5555;--text:#f8f8f2;--muted:#6272a4;--matched:#1a2e20;--matched-border:#50fa7b;--unmatched:#2a1a1a;--unmatched-border:#ff5555;--pending:#2a2a10;--pending-border:#f1fa8c;--overlay:rgba(0,0,0,.7);}
+  [data-theme="night"]      {--bg:#0f1729;--surface:#1b2838;--surface2:#1e2d3d;--border:#2a3f55;--accent:#38bdf8;--accent2:#818cf8;--green:#4ade80;--yellow:#fbbf24;--red:#f87171;--text:#cdd6f4;--muted:#4a6080;--matched:#1a2e20;--matched-border:#4ade80;--unmatched:#2e1a1a;--unmatched-border:#f87171;--pending:#2a2412;--pending-border:#fbbf24;--overlay:rgba(0,0,0,.72);}
+  [data-theme="coffee"]     {--bg:#20161f;--surface:#1a1018;--surface2:#150d13;--border:#2c1c28;--accent:#db924b;--accent2:#263e3f;--green:#36d399;--yellow:#db924b;--red:#f87272;--text:#756e63;--muted:#4a3a45;--matched:#1a2e20;--matched-border:#36d399;--unmatched:#2e1a1a;--unmatched-border:#f87272;--pending:#2a1c00;--pending-border:#db924b;--overlay:rgba(0,0,0,.75);}
+  [data-theme="winter"]     {--bg:#f0f4fc;--surface:#fff;--surface2:#f0f6ff;--border:#d0ddf0;--accent:#047aff;--accent2:#463aa1;--green:#36d399;--yellow:#fbbd23;--red:#f87272;--text:#394e6a;--muted:#9ca3af;--matched:#e0f7fa;--matched-border:#36d399;--unmatched:#fee2e2;--unmatched-border:#f87272;--pending:#fef9c3;--pending-border:#fbbd23;--overlay:rgba(0,0,0,.4);}
+  [data-theme="catppuccin"] {--bg:#1e1e2e;--surface:#24273a;--surface2:#2a2d3e;--border:#363a4f;--accent:#8aadf4;--accent2:#c6a0f6;--green:#a6da95;--yellow:#eed49f;--red:#ed8796;--text:#cad3f5;--muted:#6e738d;--matched:#1d2f22;--matched-border:#a6da95;--unmatched:#2d1d22;--unmatched-border:#ed8796;--pending:#2d2a1d;--pending-border:#eed49f;--overlay:rgba(0,0,0,.72);}
+  [data-theme="amoled"]     {--bg:#000;--surface:#0a0a0a;--surface2:#111;--border:#1f1f1f;--accent:#7c9ef8;--accent2:#b8a0fc;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--text:#f8fafc;--muted:#4b5563;--matched:#0a1f0f;--matched-border:#22c55e;--unmatched:#1f0a0a;--unmatched-border:#ef4444;--pending:#1a1a00;--pending-border:#eab308;--overlay:rgba(0,0,0,.88);}
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:13px;height:100vh;display:flex;flex-direction:column;overflow:hidden;transition:background .2s,color .2s;}
+
+  /* TOP BAR */
+  .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 14px;height:46px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+  .logo{font-size:15px;font-weight:700;color:var(--accent);letter-spacing:-.5px;white-space:nowrap;}
+  .logo span{color:var(--accent2);}
+  .sep{width:1px;height:22px;background:var(--border);}
+  .tab{padding:5px 12px;border-radius:6px;cursor:pointer;color:var(--muted);font-size:12px;font-weight:500;white-space:nowrap;transition:background .15s;}
+  .tab:hover,.tab.active{background:var(--surface2);color:var(--text);}
+  .spacer{flex:1;}
+  .btn{padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:var(--surface2);color:var(--text);cursor:pointer;font-size:12px;font-weight:500;white-space:nowrap;}
+  .btn:hover{opacity:.85;}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .btn.success{background:var(--green);border-color:var(--green);color:#fff;}
+  .btn.sm{padding:3px 8px;font-size:10px;}
+  /* THEME DROPDOWN */
+  .theme-picker-wrap{position:relative;}
+  .theme-btn{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-size:11px;color:var(--text);white-space:nowrap;}
+  .theme-swatch{width:12px;height:12px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+  .theme-dropdown{position:absolute;top:calc(100% + 6px);right:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;width:370px;box-shadow:0 12px 32px rgba(0,0,0,.5);z-index:200;display:none;}
+  .theme-dropdown.open{display:block;}
+  .theme-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;}
+  .td-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px;border-radius:6px;border:1px solid transparent;}
+  .td-item:hover,.td-item.active{border-color:var(--accent);background:var(--surface2);}
+  .td-swatch-strip{display:flex;border-radius:4px;overflow:hidden;width:52px;height:20px;border:1px solid rgba(128,128,128,.2);}
+  .td-swatch-strip span{flex:1;display:block;}
+  .td-label{font-size:8px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;text-align:center;}
+  /* OP STRIP */
+  .op-strip{padding:6px 12px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+  .op-label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+  .seg{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .seg-btn{padding:4px 10px;font-size:11px;cursor:pointer;color:var(--muted);background:var(--surface);border:none;transition:background .12s;}
+  .seg-btn.on{background:var(--accent);color:#fff;}
+  .dest-input{flex:1;min-width:180px;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:4px 9px;border-radius:6px;font-size:11px;font-family:monospace;}
+  .dest-input.required{border-color:var(--red);}
+  .req-mark{color:var(--red);font-size:14px;}
+  /* CONTEXT MENU */
+  .ctx-menu{position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:8px;min-width:210px;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:500;padding:4px 0;display:none;}
+  .ctx-item{padding:7px 14px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--text);}
+  .ctx-item:hover{background:var(--surface2);}
+  .ctx-item.danger{color:var(--red);}
+  .ctx-sep{height:1px;background:var(--border);margin:4px 0;}
+  .ctx-sub{color:var(--muted);font-size:10px;padding:4px 14px 2px;text-transform:uppercase;letter-spacing:.06em;}
+
+  /* LAYOUT */
+  .layout{display:flex;flex:1;overflow:hidden;}
+
+  /* LEFT */
+  .panel-left{width:220px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;}
+  .ph{padding:9px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .filetree{overflow-y:auto;flex:1;padding:4px 0;}
+  .ti{padding:4px 12px 4px 22px;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--muted);border-left:2px solid transparent;font-size:12px;}
+  .ti:hover{background:var(--surface2);color:var(--text);}
+  .ti.sel{background:var(--surface2);color:var(--accent);border-left-color:var(--accent);}
+  .tf{padding:5px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:600;color:var(--text);font-size:12px;}
+  .tf:hover{background:var(--surface2);}
+
+  /* CENTER */
+  .panel-center{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+  .toolbar{padding:7px 12px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+  .sel-in{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:6px;font-size:12px;cursor:pointer;}
+  .txt-in{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:6px;font-size:12px;flex:1;}
+  .badge{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;cursor:pointer;user-select:none;}
+  .badge.tmdb{background:#0d253f;color:#01d277;border:1px solid #01d277;}
+  .badge.tvdb{background:#0a1628;color:#4fa3e0;border:1px solid #4fa3e0;}
+  .badge.anidb{background:#1a0a2e;color:#a78bfa;border:1px solid #a78bfa;}
+  .badge.imdb{background:#1a1400;color:#f5c518;border:1px solid #f5c518;}
+  .badge.mb{background:#0a1e1a;color:#ba478f;border:1px solid #ba478f;}
+  .badge.off{opacity:.3;}
+
+  .split-view{display:flex;flex:1;overflow:hidden;}
+  .col{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+  .col+.col{border-left:1px solid var(--border);}
+  .col-hdr{padding:7px 12px;background:var(--surface2);border-bottom:1px solid var(--border);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;align-items:center;justify-content:space-between;}
+  .file-list{overflow-y:auto;flex:1;}
+  .fr{display:flex;align-items:center;padding:7px 12px;gap:7px;border-bottom:1px solid var(--border);cursor:pointer;border-left:3px solid transparent;}
+  .fr:hover{background:var(--surface2);}
+  .fr.matched{border-left-color:var(--matched-border);background:var(--matched);}
+  .fr.unmatched{border-left-color:var(--unmatched-border);background:var(--unmatched);}
+  .fr.pending{border-left-color:var(--pending-border);background:var(--pending);}
+  .fr.sel2{outline:1px solid var(--accent);}
+  .fi{font-size:15px;flex-shrink:0;}
+  .fn{flex:1;min-width:0;}
+  .fname{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;font-weight:500;}
+  .fmeta{color:var(--muted);font-size:10px;margin-top:1px;}
+  .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+  .dg{background:var(--green);}
+  .dr{background:var(--red);}
+  .dy{background:var(--yellow);}
+  .conf{font-size:10px;color:var(--muted);flex-shrink:0;}
+
+  .arrow-col{width:28px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:36px;background:var(--bg);border-left:1px solid var(--border);border-right:1px solid var(--border);flex-shrink:0;}
+  .arr{color:var(--muted);font-size:13px;line-height:38px;}
+
+  .format-row{padding:5px 12px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:11px;}
+  .fmt{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:3px 7px;color:var(--accent2);font-family:monospace;font-size:11px;}
+
+  /* RIGHT */
+  .panel-right{width:330px;background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden;transition:width .2s;}
+  .panel-right.collapsed{width:28px;min-width:28px;}
+  .panel-right.collapsed .right-inner{display:none;}
+  .right-collapse-btn{width:28px;height:100%;background:var(--surface2);border:none;cursor:pointer;color:var(--muted);font-size:13px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:12px;gap:6px;flex-shrink:0;border-left:1px solid var(--border);}
+  .right-collapse-btn:hover{color:var(--text);}
+  .right-collapse-btn .rot-label{writing-mode:vertical-rl;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:8px;}
+  .panel-right-body{display:flex;flex:1;overflow:hidden;}
+  .right-inner{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+  .right-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface2);}
+  .rtab{flex:1;padding:7px 4px;text-align:center;font-size:10px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;}
+  .rtab.active{color:var(--accent);border-bottom-color:var(--accent);}
+  /* FILE SELECTION */
+  .fr.file-selected{background:color-mix(in srgb,var(--accent) 18%,var(--bg)) !important;outline:1px solid var(--accent);}
+  .meta-scroll{overflow-y:auto;flex:1;}
+  .poster-area{width:100%;aspect-ratio:16/9;background:var(--surface2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+  .poster-overlay{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:12px;font-weight:600;color:#fff;}
+  .ms{padding:9px 12px;border-bottom:1px solid var(--border);}
+  .mt{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;}
+  .mr{display:flex;gap:6px;align-items:flex-start;margin-bottom:4px;}
+  .mk{color:var(--muted);font-size:11px;width:78px;flex-shrink:0;}
+  .mv{color:var(--text);font-size:11px;flex:1;}
+  .mv.ac{color:var(--accent);}
+  .tag{display:inline-block;padding:1px 7px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);font-size:10px;color:var(--muted);margin:2px 2px 0 0;}
+  .rb{height:4px;background:var(--border);border-radius:2px;flex:1;overflow:hidden;margin-top:5px;}
+  .rf{height:100%;background:var(--yellow);border-radius:2px;}
+
+  /* IMAGE GRID */
+  .img-section{padding:9px 12px;border-bottom:1px solid var(--border);}
+  .img-type-row{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px;}
+  .img-type-btn{padding:2px 8px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);font-size:10px;cursor:pointer;}
+  .img-type-btn.active{border-color:var(--accent);color:var(--accent);}
+  .img-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+  .ig{aspect-ratio:16/9;background:var(--surface2);border-radius:4px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--muted);cursor:pointer;position:relative;overflow:hidden;}
+  .ig.poster-g{aspect-ratio:2/3;}
+  .ig.sel3{border-color:var(--accent);}
+  .ig .dl-btn{position:absolute;bottom:2px;right:2px;background:var(--accent);color:#fff;border:none;border-radius:3px;font-size:8px;padding:1px 4px;cursor:pointer;opacity:0;transition:opacity .15s;}
+  .ig:hover .dl-btn{opacity:1;}
+  .ig-label{position:absolute;bottom:2px;left:3px;font-size:8px;color:rgba(255,255,255,.7);}
+  .nfo-box{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px;font-family:'Courier New',monospace;font-size:10px;color:#a0aec0;line-height:1.5;max-height:110px;overflow-y:auto;}
+  .nfo-box .xt{color:var(--accent);}
+  .nfo-box .xv{color:var(--green);}
+
+  /* COMPANIONS */
+  .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+  .comp-item{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-size:11px;}
+  .comp-item.on{border-color:var(--accent);background:rgba(108,142,245,.08);}
+  .comp-item input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;}
+  .comp-icon{font-size:13px;}
+
+  /* STATUS BAR */
+  .statusbar{height:26px;background:var(--surface);border-top:1px solid var(--border);padding:0 12px;display:flex;align-items:center;gap:14px;font-size:11px;color:var(--muted);flex-shrink:0;}
+  .si{display:flex;align-items:center;gap:4px;}
+  .sdot{width:6px;height:6px;border-radius:50%;}
+
+  /* ── MODAL BASE ── */
+  .modal-overlay{position:fixed;inset:0;background:var(--overlay);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:100;}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 24px 48px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden;}
+
+  /* ── ID PICKER MODAL ── */
+  .modal.id-picker{width:min(92vw,1080px);height:min(88vh,700px);}
+  .rposter{width:52px;height:76px;background:var(--surface2);border-radius:5px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+  .rplot{font-size:11px;color:var(--muted);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4;}
+  .rlinks{display:flex;flex-direction:column;gap:4px;flex-shrink:0;}
+  .mhdr{padding:14px 18px 11px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;}
+  .mtitle{font-size:14px;font-weight:700;}
+  .msub{font-size:11px;color:var(--muted);margin-top:2px;}
+  .mclose{margin-left:auto;color:var(--muted);cursor:pointer;font-size:17px;line-height:1;}
+  .msearch{padding:9px 18px;border-bottom:1px solid var(--border);display:flex;gap:7px;align-items:center;}
+  .id-in{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;width:160px;font-family:monospace;}
+  .srch-in{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;}
+  .db-tabs{display:flex;gap:4px;}
+  .dbt{padding:4px 9px;border-radius:6px;border:1px solid var(--border);font-size:10px;font-weight:700;cursor:pointer;color:var(--muted);background:var(--surface2);}
+  .dbt.a-tmdb{background:#0d253f;color:#01d277;border-color:#01d277;}
+  .dbt.a-tvdb{background:#0a1628;color:#4fa3e0;border-color:#4fa3e0;}
+  .dbt.a-anidb{background:#1a0a2e;color:#a78bfa;border-color:#a78bfa;}
+  .dbt.a-imdb{background:#1a1400;color:#f5c518;border-color:#f5c518;}
+  .dbt.a-mb{background:#0a1e1a;color:#ba478f;border-color:#ba478f;}
+  .mresults{overflow-y:auto;flex:1;padding:6px 0;}
+  .ri{display:flex;align-items:center;gap:10px;padding:9px 18px;cursor:pointer;border-bottom:1px solid var(--border);}
+  .ri:hover{background:var(--surface2);}
+  .ri.sel{background:var(--surface2);outline:1px solid var(--accent);}
+  .rinfo{flex:1;min-width:0;}
+  .rtitle{font-size:14px;font-weight:600;}
+  .rmeta{font-size:11px;color:var(--muted);margin-top:3px;}
+  .rids{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;}
+  .rscore{font-size:11px;color:var(--muted);flex-shrink:0;width:36px;text-align:right;font-weight:600;}
+  .rlink{font-size:10px;color:var(--accent2);text-decoration:none;padding:4px 9px;border-radius:5px;border:1px solid var(--border);white-space:nowrap;display:block;text-align:center;}
+  .rlink:hover{background:var(--surface2);}
+  .mfooter{padding:12px 22px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+  .sel-display{flex:1;font-family:monospace;font-size:11px;padding:6px 10px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);color:var(--green);}
+
+  /* ── CUSTOM SOURCES MODAL ── */
+  .modal.sources-modal{width:720px;max-height:85vh;}
+  .src-list{overflow-y:auto;flex:1;padding:8px 0;}
+  .src-item{display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid var(--border);}
+  .src-item:hover{background:var(--surface2);}
+  .src-icon{width:34px;height:34px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .src-info{flex:1;}
+  .src-name{font-size:13px;font-weight:600;}
+  .src-url{font-size:10px;color:var(--muted);font-family:monospace;margin-top:1px;}
+  .src-tags{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;}
+  .media-badge{padding:2px 7px;border-radius:10px;font-size:9px;font-weight:700;}
+  .mb-movie{background:#1a0d25;color:#c084fc;border:1px solid #c084fc;}
+  .mb-tv{background:#0d1a25;color:#60a5fa;border:1px solid #60a5fa;}
+  .mb-anime{background:#1a0a2e;color:#a78bfa;border:1px solid #a78bfa;}
+  .mb-music{background:#0a1e1a;color:#34d399;border:1px solid #34d399;}
+  .mb-all{background:#1a1a1a;color:#94a3b8;border:1px solid #94a3b8;}
+  .src-actions{display:flex;gap:6px;align-items:center;}
+  .toggle{width:34px;height:18px;border-radius:9px;background:var(--border);position:relative;cursor:pointer;transition:background .2s;}
+  .toggle.on{background:var(--green);}
+  .toggle::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left .2s;}
+  .toggle.on::after{left:18px;}
+  .add-src-form{padding:14px 18px;border-top:1px solid var(--border);background:var(--surface2);}
+  .form-row{display:flex;gap:8px;margin-bottom:8px;align-items:center;}
+  .form-label{font-size:11px;color:var(--muted);width:80px;flex-shrink:0;}
+  .form-in{flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;}
+  .media-checks{display:flex;gap:8px;flex-wrap:wrap;}
+  .mcheck{display:flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;}
+  .mcheck input{accent-color:var(--accent);}
+
+  /* scrollbar */
+  ::-webkit-scrollbar{width:4px;height:4px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">BobMedia<span>Manager</span></div>
+  <div class="sep"></div>
+  <div class="tab active">Rename & Sort</div>
+  <div class="tab">Metadata</div>
+  <div class="tab">NFO</div>
+  <div class="tab">Images</div>
+  <div class="tab">Subtitles</div>
+  <div class="tab">Verify</div>
+  <div class="tab">History</div>
+  <div class="tab" onclick="openSourcesModal()" style="color:var(--accent2);">⚙ Sources</div>
+  <div class="spacer"></div>
+  <div class="theme-picker-wrap">
+    <div class="theme-btn" onclick="toggleThemeDropdown()">
+      <div class="theme-swatch" id="themeSwatch"></div>
+      <span id="themeLabel">dark</span> ▾
+    </div>
+    <div class="theme-dropdown" id="themeDropdown">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;">☀️ Light</div>
+      <div class="theme-grid" id="themeGridLight" style="margin-bottom:10px;"></div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;">🌙 Dark</div>
+      <div class="theme-grid" id="themeGridDark"></div>
+    </div>
+  </div>
+  <div class="sep"></div>
+  <div style="display:flex;gap:6px;">
+    <button class="btn">Match All</button>
+    <button class="btn primary">▶ Execute (12)</button>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT -->
+  <div class="panel-left">
+    <div class="ph">Source Folders <span style="cursor:pointer;font-size:14px;">＋</span></div>
+    <div class="filetree">
+      <div class="tf">📁 /media/downloads</div>
+      <div class="ti sel">📂 Anime</div>
+      <div class="ti">📂 Movies</div>
+      <div class="ti">📂 TV Shows</div>
+      <div class="ti">🎵 Music</div>
+      <div class="tf" style="margin-top:6px;">📁 /media/series</div>
+      <div class="ti">📂 Completed</div>
+      <div class="ti">📂 Watching</div>
+      <div class="tf" style="margin-top:6px;">🎵 /media/music</div>
+      <div class="ti">🎵 Unsorted</div>
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="panel-center">
+    <div class="toolbar">
+      <select class="sel-in" id="mediaType" onchange="updateMediaType()">
+        <option value="anime">🎌 Anime</option>
+        <option value="tv">📺 TV Series</option>
+        <option value="movie">🎬 Movie</option>
+        <option value="music">🎵 Music</option>
+      </select>
+      <span class="badge anidb" id="b-anidb">AniDB</span>
+      <span class="badge tvdb" id="b-tvdb">TVDB</span>
+      <span class="badge tmdb" id="b-tmdb">TMDB</span>
+      <span class="badge imdb" id="b-imdb">IMDb</span>
+      <span class="badge mb off" id="b-mb">MusicBrainz</span>
+      <div class="sep"></div>
+      <button class="btn">Auto-detect</button>
+      <input class="txt-in" placeholder="Override search query…" />
+      <button class="btn" onclick="openModal()">🔍 Pick ID</button>
+    </div>
+    <!-- Operation strip: Move / Copy / Rename + mandatory destination -->
+    <div class="op-strip">
+      <span class="op-label">Operation</span>
+      <div class="seg">
+        <div class="seg-btn on" onclick="pickOp(this)">Move</div>
+        <div class="seg-btn" onclick="pickOp(this)">Copy</div>
+        <div class="seg-btn" onclick="pickOp(this)">Rename in-place</div>
+      </div>
+      <span class="op-label">Destination <span class="req-mark">*</span></span>
+      <input class="dest-input required" id="destInput" value="" placeholder="/media/library/anime  (required)"/>
+      <button class="btn sm">Browse</button>
+      <div class="sep"></div>
+      <label style="display:flex;align-items:center;gap:5px;font-size:11px;cursor:pointer;flex-shrink:0;white-space:nowrap;">
+        <input type="checkbox" style="accent-color:var(--accent);"/> Rename folders too
+      </label>
+    </div>
+
+    <div class="format-row">
+      <span style="color:var(--muted);flex-shrink:0;font-size:11px;">Format:</span>
+      <input class="fmt" value="{n} ({y})/Season {s}/{n} - S{s00}E{e00} - {t}" id="fmtInput"/>
+      <button class="btn sm">Presets</button>
+    </div>
+    <div class="split-view">
+      <div class="col">
+        <div class="col-hdr">Source Files <span style="color:var(--text);font-size:10px;" id="fileCount">14 files</span></div>
+        <div style="padding:5px 10px;border-bottom:1px solid var(--border);background:var(--surface);">
+          <input id="srcSearch" class="txt-in" style="width:100%;font-size:11px;padding:4px 8px;" placeholder="🔍  Filter files…" oninput="filterFiles(this.value)"/>
+        </div>
+        <div class="file-list" id="sourceList">
+          <div class="fr matched sel2" onclick="openModal()" oncontextmenu="showCtx(event)">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">[SubsPlease] Delicious in Dungeon - 01 [1080p].mkv</div><div class="fmeta">2.1 GB · mkv · 1080p</div></div>
+            <div class="conf">98%</div>
+          </div>
+          <div class="fr matched" oncontextmenu="showCtx(event)">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">[SubsPlease] Delicious in Dungeon - 02 [1080p].mkv</div><div class="fmeta">2.2 GB · mkv · 1080p</div></div>
+            <div class="conf">98%</div>
+          </div>
+          <div class="fr matched" oncontextmenu="showCtx(event)">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">[SubsPlease] Delicious in Dungeon - 03 [1080p].mkv</div><div class="fmeta">2.0 GB · mkv · 1080p</div></div>
+            <div class="conf">97%</div>
+          </div>
+          <!-- Folder row -->
+          <div class="fr pending" onclick="openModal()" oncontextmenu="showCtx(event)">
+            <div class="dot dy"></div><div class="fi">📁</div>
+            <div class="fn"><div class="fname">[SubsPlease] Dungeon.Meshi Season 1/</div><div class="fmeta">Folder · 24 files inside</div></div>
+            <div class="conf">71%</div>
+          </div>
+          <div class="fr unmatched" onclick="openModal()" oncontextmenu="showCtx(event)">
+            <div class="dot dr"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">unknown_anime_ep05_final.mkv</div><div class="fmeta">1.8 GB · mkv · 720p</div></div>
+            <div class="conf">—</div>
+          </div>
+          <div class="fr matched" oncontextmenu="showCtx(event)">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">Sousou.no.Frieren.E01.1080p.mkv</div><div class="fmeta">1.5 GB · mkv · 1080p</div></div>
+            <div class="conf">95%</div>
+          </div>
+          <div class="fr matched" oncontextmenu="showCtx(event)">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">The.Bear.S03E01.WEB-DL.mkv</div><div class="fmeta">1.3 GB · mkv · 1080p</div></div>
+            <div class="conf">99%</div>
+          </div>
+          <div class="fr pending" onclick="openModal()" oncontextmenu="showCtx(event)">
+            <div class="dot dy"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">movie.2024.2160p.HDR.mkv</div><div class="fmeta">18 GB · mkv · 4K HDR</div></div>
+            <div class="conf">44%</div>
+          </div>
+          <!-- Music rows (hidden by default) -->
+          <div class="fr matched music-row" style="display:none">
+            <div class="dot dg"></div><div class="fi">🎵</div>
+            <div class="fn"><div class="fname">01 - Track Name Unknown.flac</div><div class="fmeta">48 MB · flac · 24bit/96kHz</div></div>
+            <div class="conf">91%</div>
+          </div>
+          <div class="fr pending music-row" style="display:none">
+            <div class="dot dy"></div><div class="fi">🎵</div>
+            <div class="fn"><div class="fname">track02.mp3</div><div class="fmeta">8 MB · mp3 · 320kbps</div></div>
+            <div class="conf">55%</div>
+          </div>
+        </div>
+      </div>
+      <div class="arrow-col">
+        <div class="arr">→</div><div class="arr">→</div><div class="arr">→</div>
+        <div class="arr">→</div><div class="arr">?</div><div class="arr">→</div>
+        <div class="arr">→</div><div class="arr">?</div>
+      </div>
+      <div class="col">
+        <div class="col-hdr">Renamed Preview <span style="color:var(--green);font-size:10px;">6 matched · 2 pending · 1 unmatched</span></div>
+        <div style="padding:5px 10px;border-bottom:1px solid var(--border);background:var(--surface);">
+          <input class="txt-in" style="width:100%;font-size:11px;padding:4px 8px;" placeholder="🔍  Filter renamed paths…" oninput="filterRenamed(this.value)"/>
+        </div>
+        <div class="file-list" id="renamedList">
+          <div class="fr matched sel2">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">Delicious in Dungeon (2024)/Season 1/Delicious in Dungeon - S01E01 - Road to the Golden Country.mkv</div><div class="fmeta">🎌 AniDB:17243 · Ep 1</div></div>
+          </div>
+          <div class="fr matched">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">Delicious in Dungeon (2024)/Season 1/Delicious in Dungeon - S01E02 - Omelet.mkv</div><div class="fmeta">🎌 AniDB:17243 · Ep 2</div></div>
+          </div>
+          <div class="fr matched">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">Delicious in Dungeon (2024)/Season 1/Delicious in Dungeon - S01E03 - Kakiage.mkv</div><div class="fmeta">🎌 AniDB:17243 · Ep 3</div></div>
+          </div>
+          <div class="fr pending">
+            <div class="dot dy"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname" style="color:var(--yellow);">Multiple matches — click to pick</div><div class="fmeta">AniDB:17243 vs AniDB:11757?</div></div>
+          </div>
+          <div class="fr unmatched">
+            <div class="dot dr"></div><div class="fi">❓</div>
+            <div class="fn"><div class="fname" style="color:var(--red);">No match — manual search</div><div class="fmeta">Click to open ID picker</div></div>
+          </div>
+          <div class="fr matched">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">Frieren Beyond Journey's End (2023)/Season 1/Frieren - S01E01 - The Journey's End.mkv</div><div class="fmeta">🎌 AniDB:17617</div></div>
+          </div>
+          <div class="fr matched">
+            <div class="dot dg"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname">The Bear (2022)/Season 3/The Bear - S03E01 - Tomorrow.mkv</div><div class="fmeta">📺 TVDB:401015</div></div>
+          </div>
+          <div class="fr pending">
+            <div class="dot dy"></div><div class="fi">🎞️</div>
+            <div class="fn"><div class="fname" style="color:var(--yellow);">Low confidence — confirm</div><div class="fmeta">Possible: TMDB:693134 Dune Part Two?</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT — Inspector with tabs -->
+  <div class="panel-right" id="panelRight">
+    <div class="panel-right-body">
+      <div class="right-inner">
+        <div class="right-tabs">
+          <div class="rtab active" onclick="switchRTab(this,'tab-meta')">Metadata</div>
+          <div class="rtab" onclick="switchRTab(this,'tab-images')">Images</div>
+          <div class="rtab" onclick="switchRTab(this,'tab-companions')">Companions</div>
+          <div class="rtab" onclick="switchRTab(this,'tab-nfo')">NFO</div>
+        </div>
+
+    <!-- TAB: METADATA -->
+    <div class="meta-scroll" id="tab-meta">
+      <div class="poster-area">
+        <div style="text-align:center;color:var(--muted);">
+          <div style="font-size:42px;">🎌</div>
+          <div style="font-size:11px;margin-top:4px;">Delicious in Dungeon</div>
+        </div>
+        <div class="poster-overlay">Delicious in Dungeon · 2024</div>
+      </div>
+      <div class="ms">
+        <div class="mt">Series</div>
+        <div class="mr"><span class="mk">Title</span><span class="mv ac">Delicious in Dungeon</span></div>
+        <div class="mr"><span class="mk">Orig.</span><span class="mv">ダンジョン飯</span></div>
+        <div class="mr"><span class="mk">Year</span><span class="mv">2024</span></div>
+        <div class="mr"><span class="mk">Status</span><span class="mv" style="color:var(--green)">Completed · 24 eps</span></div>
+        <div class="mr"><span class="mk">Studio</span><span class="mv">Trigger</span></div>
+        <div class="mr"><span class="mk">IDs</span>
+          <span class="mv" style="display:flex;gap:3px;flex-wrap:wrap;">
+            <span class="tag" style="color:var(--accent2);">AniDB:17243</span>
+            <span class="tag" style="color:#4fa3e0;">TVDB:431514</span>
+            <span class="tag" style="color:#01d277;">TMDB:209867</span>
+            <span class="tag" style="color:#f5c518;">IMDb:tt14491254</span>
+          </span>
+        </div>
+      </div>
+      <div class="ms">
+        <div class="mt">Episode 1</div>
+        <div class="mr"><span class="mk">Title</span><span class="mv ac">Road to the Golden Country</span></div>
+        <div class="mr"><span class="mk">Aired</span><span class="mv">2024-01-04</span></div>
+        <div class="mr"><span class="mk">Runtime</span><span class="mv">24 min</span></div>
+        <div class="mr" style="align-items:center;">
+          <span class="mk">Rating</span>
+          <div class="rb"><div class="rf" style="width:91%"></div></div>
+          <span style="font-size:10px;color:var(--yellow);margin-left:6px;">9.1</span>
+        </div>
+      </div>
+      <div class="ms">
+        <div class="mt">Genres</div>
+        <span class="tag">Adventure</span><span class="tag">Comedy</span><span class="tag">Fantasy</span><span class="tag">Cooking</span><span class="tag">Dungeon</span>
+      </div>
+      <div class="ms">
+        <div class="mt">Actions</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <button class="btn" style="text-align:left;font-size:11px;">💬 Grab Subtitles</button>
+          <button class="btn" style="text-align:left;font-size:11px;">🔐 Verify File Signatures</button>
+          <button class="btn" style="text-align:left;font-size:11px;">🔁 Re-match Episode</button>
+          <button class="btn" style="text-align:left;font-size:11px;color:var(--accent);" onclick="openModal()">🔍 Override ID (e.g. TMDB:xxxx)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: IMAGES -->
+    <div class="meta-scroll" id="tab-images" style="display:none;">
+      <div class="img-section">
+        <div class="mt">Image Type</div>
+        <div class="img-type-row">
+          <div class="img-type-btn active">Poster</div>
+          <div class="img-type-btn active">Fanart</div>
+          <div class="img-type-btn active">ExtraFanart</div>
+          <div class="img-type-btn active">Thumb</div>
+          <div class="img-type-btn">Banner</div>
+          <div class="img-type-btn">Logo</div>
+          <div class="img-type-btn">ClearArt</div>
+          <div class="img-type-btn">Disc</div>
+          <div class="img-type-btn">CharArt</div>
+        </div>
+      </div>
+      <div class="img-section">
+        <div class="mt">Poster <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;">3 available</span></div>
+        <div class="img-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="ig poster-g sel3">🎌<button class="dl-btn">↓</button><span class="ig-label">2000×3000</span></div>
+          <div class="ig poster-g">🎌<button class="dl-btn">↓</button><span class="ig-label">1400×2100</span></div>
+          <div class="ig poster-g">🎌<button class="dl-btn">↓</button><span class="ig-label">680×1000</span></div>
+        </div>
+      </div>
+      <div class="img-section">
+        <div class="mt">Fanart <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;">6 available</span></div>
+        <div class="img-grid">
+          <div class="ig sel3">🖼️<button class="dl-btn">↓</button><span class="ig-label">1920×1080</span></div>
+          <div class="ig">🖼️<button class="dl-btn">↓</button><span class="ig-label">1920×1080</span></div>
+          <div class="ig">🖼️<button class="dl-btn">↓</button><span class="ig-label">1280×720</span></div>
+          <div class="ig">🖼️<button class="dl-btn">↓</button><span class="ig-label">1920×1080</span></div>
+        </div>
+      </div>
+      <div class="img-section">
+        <div class="mt" style="justify-content:space-between;">
+          ExtraFanart
+          <div style="display:flex;align-items:center;gap:6px;font-size:10px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--text);">
+            Max: <input style="width:36px;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:1px 5px;border-radius:4px;font-size:10px;" value="5"/>
+          </div>
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:6px;">Downloaded to <code style="font-size:9px;">extrafanart/</code> subfolder</div>
+        <div class="img-grid">
+          <div class="ig sel3">🖼️<button class="dl-btn">↓</button><span class="ig-label">ef/1</span></div>
+          <div class="ig sel3">🖼️<button class="dl-btn">↓</button><span class="ig-label">ef/2</span></div>
+          <div class="ig sel3">🖼️<button class="dl-btn">↓</button><span class="ig-label">ef/3</span></div>
+          <div class="ig">🖼️<button class="dl-btn">↓</button><span class="ig-label">ef/4</span></div>
+          <div class="ig">🖼️<button class="dl-btn">↓</button><span class="ig-label">ef/5</span></div>
+          <div class="ig">🖼️<button class="dl-btn">↓</button><span class="ig-label">ef/6</span></div>
+        </div>
+      </div>
+      <div class="img-section">
+        <div class="mt">Thumb / Episode Still</div>
+        <div class="img-grid">
+          <div class="ig sel3">🖼️<button class="dl-btn">↓</button><span class="ig-label">thumb</span></div>
+          <div class="ig">🖼️<button class="dl-btn">↓</button></div>
+        </div>
+      </div>
+      <div class="img-section" style="border-bottom:none;">
+        <div style="display:flex;gap:6px;">
+          <button class="btn primary" style="flex:1;font-size:11px;">↓ Download Selected</button>
+          <button class="btn" style="font-size:11px;">↓ All</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: COMPANIONS -->
+    <div class="meta-scroll" id="tab-companions" style="display:none;">
+      <div class="ms">
+        <div class="mt">NFO Files</div>
+        <div class="comp-grid">
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">📄</span>tvshow.nfo</label>
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">📄</span>episode.nfo</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">📄</span>movie.nfo</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">📄</span>artist.nfo</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">📄</span>album.nfo</label>
+        </div>
+      </div>
+      <div class="ms">
+        <div class="mt">Series-Level Images</div>
+        <div class="comp-grid">
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">🖼️</span>poster.jpg</label>
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">🖼️</span>fanart.jpg</label>
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">🖼️</span>extrafanart/</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>banner.jpg</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>logo.png</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>clearart.png</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>landscape.jpg</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>disc.png</label>
+        </div>
+      </div>
+      <div class="ms">
+        <div class="mt">Season-Level Images</div>
+        <div class="comp-grid">
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">🖼️</span>season{N}-poster.jpg</label>
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">🖼️</span>season{N}-fanart.jpg</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>season{N}-banner.jpg</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>season-all-poster.jpg</label>
+        </div>
+      </div>
+      <div class="ms">
+        <div class="mt">Episode-Level Images</div>
+        <div class="comp-grid">
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">🖼️</span>{ep}-thumb.jpg</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>{ep}-landscape.jpg</label>
+        </div>
+      </div>
+      <div class="ms">
+        <div class="mt">Music Companions</div>
+        <div class="comp-grid">
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>folder.jpg</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">🖼️</span>artist.jpg</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">📄</span>artist.nfo</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">📄</span>album.nfo</label>
+        </div>
+      </div>
+      <div class="ms" style="border-bottom:none;">
+        <div class="mt">Subtitle Companions</div>
+        <div class="comp-grid">
+          <label class="comp-item on"><input type="checkbox" checked/><span class="comp-icon">💬</span>{ep}.en.srt</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">💬</span>{ep}.fr.srt</label>
+          <label class="comp-item"><input type="checkbox"/><span class="comp-icon">💬</span>{ep}.ja.srt</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: NFO -->
+    <div class="meta-scroll" id="tab-nfo" style="display:none;">
+      <div class="ms">
+        <div class="mt" style="justify-content:space-between;">NFO Template <button class="btn sm">Edit</button></div>
+        <div class="nfo-box">
+<span class="xt">&lt;episodedetails&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;title&gt;</span><span class="xv">Road to the Golden Country</span><span class="xt">&lt;/title&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;showtitle&gt;</span><span class="xv">Delicious in Dungeon</span><span class="xt">&lt;/showtitle&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;season&gt;</span><span class="xv">1</span><span class="xt">&lt;/season&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;episode&gt;</span><span class="xv">1</span><span class="xt">&lt;/episode&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;aired&gt;</span><span class="xv">2024-01-04</span><span class="xt">&lt;/aired&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;rating&gt;</span><span class="xv">9.1</span><span class="xt">&lt;/rating&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;anidbid&gt;</span><span class="xv">17243</span><span class="xt">&lt;/anidbid&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;tmdbid&gt;</span><span class="xv">209867</span><span class="xt">&lt;/tmdbid&gt;</span><br>
+&nbsp;&nbsp;<span class="xt">&lt;imdbid&gt;</span><span class="xv">tt14491254</span><span class="xt">&lt;/imdbid&gt;</span><br>
+<span class="xt">&lt;/episodedetails&gt;</span>
+        </div>
+      </div>
+      <div class="ms" style="border-bottom:none;">
+        <button class="btn primary" style="width:100%;font-size:11px;">📄 Generate NFO Files</button>
+      </div>
+    </div>
+      </div><!-- /right-inner -->
+      <button class="right-collapse-btn" onclick="toggleRightPanel()" id="collapseBtn" title="Collapse inspector">
+        ◀
+        <span class="rot-label" id="collapseBtnLabel">Inspector</span>
+      </button>
+    </div><!-- /panel-right-body -->
+  </div><!-- /panel-right -->
+
+</div><!-- /layout -->
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+  <div class="si"><div class="sdot" style="background:var(--green)"></div>AniDB</div>
+  <div class="si"><div class="sdot" style="background:var(--green)"></div>TVDB</div>
+  <div class="si"><div class="sdot" style="background:var(--green)"></div>TMDB</div>
+  <div class="si"><div class="sdot" style="background:var(--green)"></div>IMDb</div>
+  <div class="si"><div class="sdot" style="background:var(--yellow)"></div>OpenSub</div>
+  <div class="si"><div class="sdot" style="background:var(--muted)"></div>MusicBrainz</div>
+  <div class="sep"></div>
+  <div class="si">14 files · 9 matched · 2 pending · 1 unmatched</div>
+  <div class="spacer"></div>
+  <div class="si" style="color:var(--muted);">Port :48040</div>
+</div>
+
+
+<!-- ══ CONTEXT MENU ══ -->
+<div class="ctx-menu" id="ctxMenu">
+  <div class="ctx-sub">File / Folder</div>
+  <div class="ctx-item" onclick="openModal();closeCtx()">🔍 Search / Override ID…</div>
+  <div class="ctx-item" onclick="closeCtx()">🔁 Re-match</div>
+  <div class="ctx-item" onclick="closeCtx()">✏️ Edit Renamed Path</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" onclick="closeCtx()">📄 Generate NFO</div>
+  <div class="ctx-item" onclick="closeCtx()">📥 Download Images</div>
+  <div class="ctx-item" onclick="closeCtx()">💬 Grab Subtitles</div>
+  <div class="ctx-item" onclick="closeCtx()">🔐 Verify Signature</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-sub">Batch</div>
+  <div class="ctx-item" onclick="closeCtx()">✅ Select All Matched</div>
+  <div class="ctx-item" onclick="closeCtx()">📦 Execute Selected Only</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" onclick="closeCtx()">📋 Copy Source Path</div>
+  <div class="ctx-item" onclick="closeCtx()">📋 Copy Destination Path</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item danger" onclick="closeCtx()">🗑️ Remove from List</div>
+</div>
+
+<!-- ══════════════ ID PICKER MODAL ══════════════ -->
+<div class="modal-overlay" id="modal" style="display:none;" onclick="closeModalOutside(event,'modal')">
+  <div class="modal id-picker">
+    <div class="mhdr">
+      <div>
+        <div class="mtitle">Select / Override Media ID</div>
+        <div class="msub">File: <strong style="color:var(--accent)">[SubsPlease] Delicious in Dungeon - 01.mkv</strong> &nbsp;·&nbsp; Type directly: <code style="color:var(--accent2)">TMDB:12345</code> or <code style="color:var(--accent2)">ANIDB:17243</code></div>
+      </div>
+      <span class="mclose" onclick="closeModal('modal')">✕</span>
+    </div>
+    <div class="msearch">
+      <div class="db-tabs">
+        <div class="dbt a-anidb">AniDB</div>
+        <div class="dbt a-tvdb">TVDB</div>
+        <div class="dbt a-tmdb">TMDB</div>
+        <div class="dbt a-imdb">IMDb</div>
+        <div class="dbt">MusicBrainz</div>
+      </div>
+      <input class="id-in" placeholder="ANIDB:17243"/>
+      <input class="srch-in" value="Delicious in Dungeon"/>
+      <button class="btn primary">Search</button>
+    </div>
+    <div class="mresults">
+      <div class="ri sel">
+        <div class="rposter">🎌</div>
+        <div class="rinfo">
+          <div class="rtitle">Delicious in Dungeon <span style="color:var(--muted);font-weight:400;font-size:12px">(2024)</span></div>
+          <div class="rmeta">TV Series · 24 eps · Trigger · Anime, Fantasy, Comedy · Japan</div>
+          <div class="rplot">When Laios and his party are forced to flee the dungeon after a dragon attack, they must resort to eating the monsters they defeat to survive and push deeper…</div>
+          <div class="rids">
+            <span class="tag" style="color:var(--accent2)">AniDB:17243</span>
+            <span class="tag" style="color:#4fa3e0">TVDB:431514</span>
+            <span class="tag" style="color:#01d277">TMDB:209867</span>
+            <span class="tag" style="color:#f5c518">IMDb:tt14491254</span>
+          </div>
+        </div>
+        <div class="rscore" style="color:var(--green)">98%</div>
+        <div class="rlinks">
+          <a class="rlink" href="#" onclick="return false">↗ AniDB</a>
+          <a class="rlink" href="#" onclick="return false">↗ TVDB</a>
+          <a class="rlink" href="#" onclick="return false">↗ TMDB</a>
+          <a class="rlink" href="#" onclick="return false">↗ IMDb</a>
+        </div>
+      </div>
+      <div class="ri">
+        <div class="rposter">🎌</div>
+        <div class="rinfo">
+          <div class="rtitle">Dungeon Meshi <span style="color:var(--muted);font-weight:400;font-size:12px">(2024)</span></div>
+          <div class="rmeta">Alternate title entry · same series in AniDB old system</div>
+          <div class="rids">
+            <span class="tag" style="color:var(--accent2)">AniDB:11757</span>
+            <span class="tag" style="color:#01d277">TMDB:209867</span>
+          </div>
+        </div>
+        <div class="rscore">71%</div>
+        <div class="rlinks">
+          <a class="rlink" href="#" onclick="return false">↗ AniDB</a>
+          <a class="rlink" href="#" onclick="return false">↗ TMDB</a>
+        </div>
+      </div>
+      <div class="ri">
+        <div class="rposter">📺</div>
+        <div class="rinfo">
+          <div class="rtitle">Delicious in Dungeon: Side Stories <span style="color:var(--muted);font-weight:400;font-size:12px">(2024)</span></div>
+          <div class="rmeta">OVA / Special · 3 eps · Bonus content</div>
+          <div class="rids"><span class="tag" style="color:var(--accent2)">AniDB:18301</span></div>
+        </div>
+        <div class="rscore">34%</div>
+        <div class="rlinks"><a class="rlink" href="#" onclick="return false">↗ AniDB</a></div>
+      </div>
+      <div class="ri">
+        <div class="rposter">🎬</div>
+        <div class="rinfo">
+          <div class="rtitle">Dungeon (2023) <span style="color:var(--muted);font-weight:400;font-size:12px">(2023)</span></div>
+          <div class="rmeta">Movie · Unrelated title match</div>
+          <div class="rids">
+            <span class="tag" style="color:#01d277">TMDB:921636</span>
+            <span class="tag" style="color:#f5c518">IMDb:tt12345678</span>
+          </div>
+        </div>
+        <div class="rscore" style="color:var(--red)">12%</div>
+        <div class="rlinks">
+          <a class="rlink" href="#" onclick="return false">↗ TMDB</a>
+          <a class="rlink" href="#" onclick="return false">↗ IMDb</a>
+        </div>
+      </div>
+    </div>
+    <div class="mfooter">
+      <span style="font-size:11px;color:var(--muted)">Selected:</span>
+      <div class="sel-display">AniDB:17243 · TVDB:431514 · TMDB:209867 · IMDb:tt14491254 — Delicious in Dungeon (2024)</div>
+      <button class="btn" onclick="closeModal('modal')">Cancel</button>
+      <button class="btn success" onclick="closeModal('modal')">✓ Confirm</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════ CUSTOM SOURCES MODAL ══════════════ -->
+<div class="modal-overlay" id="sourcesModal" style="display:none;" onclick="closeModalOutside(event,'sourcesModal')">
+  <div class="modal sources-modal">
+    <div class="mhdr">
+      <div>
+        <div class="mtitle">Metadata Sources</div>
+        <div class="msub">Manage built-in and custom API sources. Specify which media types each source applies to.</div>
+      </div>
+      <span class="mclose" onclick="closeModal('sourcesModal')">✕</span>
+    </div>
+    <div class="src-list">
+
+      <!-- Built-in sources -->
+      <div style="padding:6px 18px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);">Built-in</div>
+
+      <div class="src-item">
+        <div class="src-icon">🎌</div>
+        <div class="src-info">
+          <div class="src-name">AniDB</div>
+          <div class="src-url">api.anidb.net · UDP API</div>
+          <div class="src-tags">
+            <span class="media-badge mb-anime">Anime</span>
+          </div>
+        </div>
+        <div class="src-actions"><div class="toggle on"></div><button class="btn sm">Configure</button></div>
+      </div>
+
+      <div class="src-item">
+        <div class="src-icon">📺</div>
+        <div class="src-info">
+          <div class="src-name">TheTVDB</div>
+          <div class="src-url">api4.thetvdb.com/v4</div>
+          <div class="src-tags">
+            <span class="media-badge mb-tv">TV Series</span>
+            <span class="media-badge mb-anime">Anime</span>
+          </div>
+        </div>
+        <div class="src-actions"><div class="toggle on"></div><button class="btn sm">Configure</button></div>
+      </div>
+
+      <div class="src-item">
+        <div class="src-icon">🎬</div>
+        <div class="src-info">
+          <div class="src-name">TMDB</div>
+          <div class="src-url">api.themoviedb.org/3</div>
+          <div class="src-tags">
+            <span class="media-badge mb-movie">Movie</span>
+            <span class="media-badge mb-tv">TV Series</span>
+            <span class="media-badge mb-anime">Anime</span>
+          </div>
+        </div>
+        <div class="src-actions"><div class="toggle on"></div><button class="btn sm">Configure</button></div>
+      </div>
+
+      <div class="src-item">
+        <div class="src-icon">⭐</div>
+        <div class="src-info">
+          <div class="src-name">IMDb</div>
+          <div class="src-url">imdb.com · scrape / Cinemagoer</div>
+          <div class="src-tags">
+            <span class="media-badge mb-movie">Movie</span>
+            <span class="media-badge mb-tv">TV Series</span>
+          </div>
+        </div>
+        <div class="src-actions"><div class="toggle on"></div><button class="btn sm">Configure</button></div>
+      </div>
+
+      <div class="src-item">
+        <div class="src-icon">🎵</div>
+        <div class="src-info">
+          <div class="src-name">MusicBrainz</div>
+          <div class="src-url">musicbrainz.org/ws/2</div>
+          <div class="src-tags">
+            <span class="media-badge mb-music">Music</span>
+          </div>
+        </div>
+        <div class="src-actions"><div class="toggle"></div><button class="btn sm">Configure</button></div>
+      </div>
+
+      <div class="src-item">
+        <div class="src-icon">🎵</div>
+        <div class="src-info">
+          <div class="src-name">Last.fm</div>
+          <div class="src-url">ws.audioscrobbler.com/2.0</div>
+          <div class="src-tags">
+            <span class="media-badge mb-music">Music</span>
+          </div>
+        </div>
+        <div class="src-actions"><div class="toggle"></div><button class="btn sm">Configure</button></div>
+      </div>
+
+      <!-- Custom sources -->
+      <div style="padding:10px 18px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;align-items:center;justify-content:space-between;">
+        Custom Sources
+      </div>
+
+      <div class="src-item">
+        <div class="src-icon">🌐</div>
+        <div class="src-info">
+          <div class="src-name">MyAnimeList (Jikan)</div>
+          <div class="src-url">api.jikan.moe/v4</div>
+          <div class="src-tags">
+            <span class="media-badge mb-anime">Anime</span>
+          </div>
+        </div>
+        <div class="src-actions"><div class="toggle on"></div><button class="btn sm">Edit</button><button class="btn sm" style="color:var(--red)">✕</button></div>
+      </div>
+
+      <div class="src-item" style="opacity:.6;font-style:italic;">
+        <div class="src-icon">➕</div>
+        <div class="src-info">
+          <div class="src-name" style="color:var(--muted)">Add custom source…</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Add source form -->
+    <div class="add-src-form">
+      <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">Add Custom Source</div>
+      <div class="form-row">
+        <span class="form-label">Name</span>
+        <input class="form-in" placeholder="e.g. Kitsu"/>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Base URL</span>
+        <input class="form-in" placeholder="https://kitsu.io/api/edge"/>
+      </div>
+      <div class="form-row">
+        <span class="form-label">API Key</span>
+        <input class="form-in" placeholder="Optional — Bearer token / key"/>
+      </div>
+      <div class="form-row">
+        <span class="form-label">Media Types</span>
+        <div class="media-checks">
+          <label class="mcheck"><input type="checkbox"/> Movie</label>
+          <label class="mcheck"><input type="checkbox" checked/> TV Series</label>
+          <label class="mcheck"><input type="checkbox" checked/> Anime</label>
+          <label class="mcheck"><input type="checkbox"/> Music</label>
+        </div>
+      </div>
+      <div class="form-row" style="margin-bottom:0;">
+        <span class="form-label">Field Map</span>
+        <input class="form-in" placeholder='{"title":"data.attributes.canonicalTitle","year":"…"}' style="font-family:monospace;font-size:10px;"/>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:6px;justify-content:flex-end;">
+        <button class="btn">Test Connection</button>
+        <button class="btn primary">Add Source</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  /* ── DaisyUI theme data: [name, bg, primary, secondary, accent] — light first, dark second ── */
+  const THEMES=[
+    // ── Light themes ──
+    ['light',    '#f2f2f2','#570df8','#f000b8','#1dcdbc'],
+    ['cupcake',  '#faf7f5','#65c3c8','#ef9fbc','#a4cbb4'],
+    ['bumblebee','#ffffff','#e0a82e','#181830','#a4cbb4'],
+    ['emerald',  '#f9fafb','#66cc8a','#377cfb','#f68067'],
+    ['corporate','#f9f9f9','#4b6bfb','#7b92b2','#5c7f67'],
+    ['retro',    '#e4d8b4','#ef9995','#a4cbb4','#e9c46a'],
+    ['cyberpunk','#ffee00','#ff7598','#75d1f0','#adff2f'],
+    ['valentine','#fae8f0','#e96d9b','#a991f7','#a0c4b4'],
+    ['garden',   '#e9e7e7','#5c7f67','#cc4c4c','#d4a017'],
+    ['lofi',     '#ffffff','#0d0d0d','#1a1a1a','#808080'],
+    ['pastel',   '#f8f0fb','#d1a3e8','#f4a7b9','#a8d8a8'],
+    ['fantasy',  '#ffffff','#6e0b75','#007ebd','#f87272'],
+    ['winter',   '#f0f4fc','#047aff','#463aa1','#f87272'],
+    // ── Dark themes ──
+    ['dark',     '#1d232a','#661ae4','#d926a9','#1fb2a6'],
+    ['synthwave','#1a103c','#e779c1','#58c7f3','#f3cc30'],
+    ['halloween','#1d0500','#f28c18','#6d3a63','#51a800'],
+    ['forest',   '#0e1c0e','#1eb854','#1fd65f','#e9c46a'],
+    ['aqua',     '#345da7','#09ecf3','#966fb3','#f3cc30'],
+    ['black',    '#000000','#ffffff','#999999','#444444'],
+    ['luxury',   '#09090b','#c4a46b','#9a9a9a','#585858'],
+    ['dracula',  '#282a36','#ff79c6','#bd93f9','#50fa7b'],
+    ['night',    '#0f1729','#38bdf8','#818cf8','#4ade80'],
+    ['coffee',   '#20161f','#db924b','#263e3f','#a4cbb4'],
+    ['catppuccin','#1e1e2e','#8aadf4','#c6a0f6','#a6da95'],
+    ['amoled',   '#000000','#7c9ef8','#b8a0fc','#22c55e'],
+  ];
+
+  const LIGHT_THEMES=['light','cupcake','bumblebee','emerald','corporate','retro','cyberpunk','valentine','garden','lofi','pastel','fantasy','winter'];
+
+  function makeThemeItem(t,cur){
+    const name=t[0],bg=t[1],p=t[2],s=t[3],a=t[4];
+    const item=document.createElement('div');
+    item.className='td-item'+(name===cur?' active':'');
+    item.title=name;
+    const strip=document.createElement('div');
+    strip.className='td-swatch-strip';
+    [bg,p,s,a].forEach(function(c){
+      const sp=document.createElement('span');
+      sp.style.background=c;
+      strip.appendChild(sp);
+    });
+    const lbl=document.createElement('div');
+    lbl.className='td-label';
+    lbl.textContent=name;
+    item.appendChild(strip);
+    item.appendChild(lbl);
+    item.addEventListener('click',function(){ setTheme(name); });
+    return item;
+  }
+
+  function buildThemeGrid(){
+    const cur=document.documentElement.getAttribute('data-theme');
+    const gl=document.getElementById('themeGridLight');
+    const gd=document.getElementById('themeGridDark');
+    while(gl.firstChild) gl.removeChild(gl.firstChild);
+    while(gd.firstChild) gd.removeChild(gd.firstChild);
+    THEMES.forEach(function(t){
+      const isLight=LIGHT_THEMES.includes(t[0]);
+      (isLight?gl:gd).appendChild(makeThemeItem(t,cur));
+    });
+  }
+
+  function setTheme(name){
+    document.documentElement.setAttribute('data-theme',name);
+    document.getElementById('themeLabel').textContent=name;
+    buildThemeGrid();
+    document.getElementById('themeDropdown').classList.remove('open');
+  }
+
+  function toggleThemeDropdown(){
+    document.getElementById('themeDropdown').classList.toggle('open');
+  }
+
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.theme-picker-wrap'))
+      document.getElementById('themeDropdown').classList.remove('open');
+  });
+
+  /* ── Context menu ── */
+  function showCtx(e){
+    e.preventDefault();
+    e.stopPropagation();
+    const m=document.getElementById('ctxMenu');
+    m.style.display='block';
+    m.style.left=Math.min(e.clientX,window.innerWidth-220)+'px';
+    m.style.top=Math.min(e.clientY,window.innerHeight-320)+'px';
+  }
+  function closeCtx(){ document.getElementById('ctxMenu').style.display='none'; }
+  document.addEventListener('click',closeCtx);
+  document.addEventListener('contextmenu',function(e){ if(!e.target.closest('.fr')) closeCtx(); });
+
+  /* ── Modals ── */
+  function openModal(){ document.getElementById('modal').style.display='flex'; }
+  function openSourcesModal(){ document.getElementById('sourcesModal').style.display='flex'; }
+  function closeModal(id){ document.getElementById(id).style.display='none'; }
+  function closeModalOutside(e,id){ if(e.target===document.getElementById(id)) closeModal(id); }
+
+  document.querySelectorAll('.ri').forEach(function(i){
+    i.addEventListener('click',function(e){
+      if(e.target.classList.contains('rlink')) return;
+      document.querySelectorAll('.ri').forEach(function(x){ x.classList.remove('sel'); });
+      this.classList.add('sel');
+    });
+  });
+
+  /* ── Right panel tabs ── */
+  function switchRTab(el,tabId){
+    document.querySelectorAll('.rtab').forEach(function(t){ t.classList.remove('active'); });
+    el.classList.add('active');
+    ['tab-meta','tab-images','tab-companions','tab-nfo'].forEach(function(id){
+      document.getElementById(id).style.display=id===tabId?'':'none';
+    });
+  }
+
+  /* ── Media type ── */
+  function updateMediaType(){
+    const v=document.getElementById('mediaType').value;
+    const map={anidb:['anime'],tvdb:['tv','anime'],tmdb:['movie','tv','anime'],imdb:['movie','tv'],mb:['music']};
+    Object.entries(map).forEach(function([id,types]){
+      document.getElementById('b-'+id).classList.toggle('off',!types.includes(v));
+    });
+    const fmts={
+      anime:'{n} ({y})/Season {s}/{n} - S{s00}E{e00} - {t}',
+      tv:'{n} ({y})/Season {s}/{n} - S{s00}E{e00} - {t}',
+      movie:'{n} ({y})/{n} ({y})',
+      music:'{artist}/{album} ({y})/{track00} - {t}'
+    };
+    document.getElementById('fmtInput').value=fmts[v];
+    document.querySelectorAll('.music-row').forEach(function(r){ r.style.display=v==='music'?'flex':'none'; });
+    const di=document.getElementById('destInput');
+    if(!di.value.trim()) di.classList.add('required'); else di.classList.remove('required');
+  }
+
+  /* ── Destination validation ── */
+  document.getElementById('destInput').addEventListener('input',function(){
+    this.classList.toggle('required',!this.value.trim());
+  });
+
+  /* ── Operation selector ── */
+  function pickOp(btn){
+    document.querySelectorAll('.seg-btn').forEach(function(b){ b.classList.remove('on'); });
+    btn.classList.add('on');
+    const di=document.getElementById('destInput');
+    if(btn.textContent.trim()==='Rename in-place'){
+      di.disabled=true; di.style.opacity='.4'; di.classList.remove('required');
+    } else {
+      di.disabled=false; di.style.opacity='1';
+      if(!di.value.trim()) di.classList.add('required');
+    }
+  }
+
+  /* ── Image type btns / companion checkboxes / toggles ── */
+  document.querySelectorAll('.img-type-btn').forEach(function(b){ b.addEventListener('click',function(){ this.classList.toggle('active'); }); });
+  document.querySelectorAll('.comp-item').forEach(function(c){ c.addEventListener('click',function(){ this.classList.toggle('on'); }); });
+  document.querySelectorAll('.toggle').forEach(function(t){ t.addEventListener('click',function(){ this.classList.toggle('on'); }); });
+
+  /* ── Source file search/filter ── */
+  function filterFiles(q){
+    const rows=document.querySelectorAll('#sourceList .fr');
+    let visible=0;
+    rows.forEach(function(r){
+      const name=r.querySelector('.fname');
+      if(!name) return;
+      const match=!q||name.textContent.toLowerCase().includes(q.toLowerCase());
+      r.style.display=match?'flex':'none';
+      if(match) visible++;
+    });
+    const cnt=document.getElementById('fileCount');
+    if(cnt) cnt.textContent=q?(visible+' match'+(visible!==1?'es':'')):'14 files';
+  }
+
+  function filterRenamed(q){
+    const rows=document.querySelectorAll('#renamedList .fr');
+    rows.forEach(function(r){
+      const name=r.querySelector('.fname');
+      if(!name) return;
+      const match=!q||name.textContent.toLowerCase().includes(q.toLowerCase());
+      r.style.display=match?'flex':'none';
+    });
+  }
+
+  /* ── Ctrl/Shift multi-selection ── */
+  let _lastSelected=null;
+  document.getElementById('sourceList').addEventListener('click',function(e){
+    const row=e.target.closest('.fr');
+    if(!row) return;
+    const rows=Array.from(document.querySelectorAll('#sourceList .fr:not([style*="display: none"])'));
+    if(e.shiftKey && _lastSelected && rows.includes(_lastSelected)){
+      const a=rows.indexOf(_lastSelected), b=rows.indexOf(row);
+      const lo=Math.min(a,b), hi=Math.max(a,b);
+      if(!e.ctrlKey && !e.metaKey) rows.forEach(function(r){ r.classList.remove('file-selected'); });
+      rows.slice(lo,hi+1).forEach(function(r){ r.classList.add('file-selected'); });
+    } else if(e.ctrlKey||e.metaKey){
+      row.classList.toggle('file-selected');
+      _lastSelected=row;
+    } else {
+      rows.forEach(function(r){ r.classList.remove('file-selected'); });
+      row.classList.add('file-selected');
+      _lastSelected=row;
+    }
+  });
+
+  /* ── Collapse right panel ── */
+  function toggleRightPanel(){
+    const p=document.getElementById('panelRight');
+    const btn=document.getElementById('collapseBtn');
+    const lbl=document.getElementById('collapseBtnLabel');
+    const collapsed=p.classList.toggle('collapsed');
+    btn.firstChild.nodeValue=collapsed?'▶':'◀';
+    lbl.style.display=collapsed?'block':'none';
+  }
+
+  /* ── Init ── */
+  buildThemeGrid();
+</script>
+</body>
+</html>
